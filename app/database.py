@@ -3,22 +3,13 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from app.config import settings
 
-# Support both PostgreSQL and SQLite
-if settings.DATABASE_URL.startswith("sqlite"):
-    # SQLite configuration
-    database_url = settings.DATABASE_URL.replace("sqlite://", "sqlite:///")
-    engine = create_engine(
-        database_url,
-        connect_args={"check_same_thread": False},  # SQLite specific
-        echo=settings.DEBUG
-    )
-else:
-    # PostgreSQL configuration
-    engine = create_engine(
-        settings.DATABASE_URL,
-        pool_pre_ping=True,
-        echo=settings.DEBUG
-    )
+# Use SQLite with absolute path
+database_url = "sqlite:///tempmail.db"
+engine = create_engine(
+    database_url,
+    connect_args={"check_same_thread": False},
+    echo=True
+)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

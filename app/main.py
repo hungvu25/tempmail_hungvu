@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
 from app.routers import inbound, inboxes, messages, attachments, websocket
-from app.background import background_tasks
+from app.background import cleanup_expired_inboxes
 import asyncio
 
 # Create database tables
@@ -33,7 +33,7 @@ app.include_router(websocket.router, prefix="/ws", tags=["websocket"])
 @app.on_event("startup")
 async def startup_event():
     """Start background tasks"""
-    asyncio.create_task(background_tasks.cleanup_expired_inboxes())
+    asyncio.create_task(cleanup_expired_inboxes())
 
 @app.get("/health")
 async def health():

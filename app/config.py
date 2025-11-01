@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     # Database
     DATABASE_URL: str = os.getenv(
         "DATABASE_URL",
-        "postgresql://tempmail:tempmail@localhost:5432/tempmail"
+        "sqlite:///./tempmail.db"
     )
     
     # Server
