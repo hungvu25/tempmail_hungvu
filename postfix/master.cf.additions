@@ -1,0 +1,6 @@
+# Additions to /etc/postfix/master.cf
+# Add this pipe transport configuration (usually after the existing entries)
+
+pipe    unix  -       n       n       -       -       pipe
+  flags=DRhu user=postfix argv=/opt/mailpipe/run_mailpipe.sh
+

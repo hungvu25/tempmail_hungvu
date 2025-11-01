@@ -1,0 +1,10 @@
+# /etc/postfix/virtual
+# Catch-all configuration - all emails to @yourdomain.com go to mailpipe
+
+# Replace yourdomain.com with your actual domain
+@yourdomain.com    pipe:[/opt/mailpipe/run_mailpipe.sh]
+
+# Or for specific addresses:
+# test@yourdomain.com    pipe:[/opt/mailpipe/run_mailpipe.sh]
+# inbox@yourdomain.com   pipe:[/opt/mailpipe/run_mailpipe.sh]
+

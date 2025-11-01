@@ -1,0 +1,11 @@
+From: sender@example.com
+To: test@example.com
+Subject: Test Email
+Date: Mon, 1 Jan 2024 12:00:00 +0000
+Content-Type: text/plain; charset=utf-8
+
+This is a test email for the TempMail service.
+You can use this file to test the inbound email API.
+
+Replace "test@example.com" with your actual inbox email address.
+
